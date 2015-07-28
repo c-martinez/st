@@ -61,27 +61,25 @@ Once you have built a semanticizer model, you can use semanticizest from Python
 using the Python wrapper. You can use the python wrapper as follows:
 
 Assuming you have a serverd running on port 5002 as described above:
-```
-from semanticize import SemanticizerClient
 
-sentence = 'Antwerpen'
-serverURL = 'http://localhost:5002/'
-client = SemanticizerClient(serverURL)
-candidates = client.all_candidates(sentence)
-```
+    from semanticize import SemanticizerClient
+
+    sentence = 'Antwerpen'
+    serverURL = 'http://localhost:5002/'
+    client = SemanticizerClient(serverURL)
+    candidates = client.all_candidates(sentence)
 
 A *SemanticizerServer* class also provides the option of starting the semanticizer
 server from Python, removing dependency on an external server. However, this server
 runs on a random port on localhost and thus may be limited by the hardware of the
 local machine. You must have build a model first and provide a path for semanticizest.
 You can start, use and stop the server as follows:
-```
-from semanticize import SemanticizerServer, SemanticizerClient
 
-sentence = 'Antwerpen'
-server = SemanticizerServer(model='nlsample.go.model',
-                            stPath='./bin/semanticizest')
-client = SemanticizerClient(server.getURL())
-candidates = client.all_candidates(sentence)
-server.stop()
-```
+    from semanticize import SemanticizerServer, SemanticizerClient
+
+    sentence = 'Antwerpen'
+    server = SemanticizerServer(model='nlsample.go.model', stPath='./bin/semanticizest')
+    client = SemanticizerClient(server.getURL())
+    candidates = client.all_candidates(sentence)
+    server.stop()
+
